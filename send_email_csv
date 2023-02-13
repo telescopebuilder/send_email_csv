@@ -1,0 +1,9 @@
+---
+- name: Send email with file attachment
+  hosts: andy-awxnode-test
+  gather_facts: no
+  become: yes
+  become_user: ansible_andy
+  tasks:
+    - name: Send email
+      shell: echo "This is the current host information." | sudo mail -s "Host info" -A /tmp/combined-host-info/current_host_info.csv -r "AnsibleAWX@fleetfarm.com" "andy.adolphson@fleetfarm.com"
